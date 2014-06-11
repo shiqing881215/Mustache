@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+	<title>Mustache Demo</title>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+</head>
+<body onload="loadUser()">
+	<div id="target">Loading...</div>
+	<script id="template" type="x-tmpl-mustache">
+		<h1> Welcome to {{ name }}! </h1>
+	</script>
+
+	<hr/>
+	<h2><b>Variable</b></h2>
+	<button onclick="load0()">Load0</button>
+	<div id="target0">Load0 placeholder</div>
+	<script id="template0" type="x-tmpl-mustache">
+		{{title}}
+		{{age}}
+		{{name.first}} {{name.last}}
+		{{{italic}}}
+	</script>
+
+	<hr/>
+	<h2>Section</h2>
+	<br/>
+	<h3>Sections render blocks of text one or more times, depending on the value of the key in the current context.
+    A section begins with a pound and ends with a slash. That is, {{#person}} begins a person section, while {{/person}} ends it. The text between the two tags is referred to as that section's "block".</h3>
+	<button onclick="load1()">Load1</button>
+	<div id="target1">Load1 placeholder</div>
+	<script id="template1" type="x-tmpl-mustache">
+		{{#people}}
+		{{name}}
+		{{/people}}
+		<br/>
+		{{#people1}}
+		{{.}}
+		{{/people1}}
+	</script>
+
+	<hr/>
+	<h2>Function</h2>
+	<br/>
+	<h3>If the value of a section key is a function, it is called with the section's literal block of text, un-rendered, as its first argument. The second argument is a special rendering function that uses the current view as its view argument. It is called in the context of the current view object.</h3>
+	<button onclick="load2()">Load2</button>
+	<div id="target2">Load2 placeholder</div>
+	<script id="template2" type="x-tmpl-mustache">
+		{{#italic}} Hello {{name}} ! {{/italic}}
+	</script>
+
+	<hr/>
+	<h2>Inverted Section</h2>
+	<br/>
+	<h3>An inverted section opens with {{^section}} instead of {{#section}}. The block of an inverted section is rendered only if the value of that section's tag is null, undefined, false, or an empty list.</h3>
+	<button onclick="load3()">Load3</button>
+	<div id="target3">Load3 placeholder</div>
+	<script id="template3" type="x-tmpl-mustache">
+		{{#inverted}} This is the normal order {{/inverted}}
+		{{^inverted}} This is inverted section {{/inverted}}
+	</script>
+
+	<hr/>
+	<h2>Comments</h2>
+	<div>Afterwards is cooment and will not show </div>
+	<script id="template4" type="x-tmpl-mustache">
+		{{! Will not show}}
+	</script>
+
+</body>
+</html>

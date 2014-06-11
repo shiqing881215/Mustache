@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<title>Mustache Demo</title>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var view = {
+				name : "Mustache"
+			};
+
+			$('#template').load('template.html', function() { debugger;
+				var template = document.getElementById('template1').innerHTML;
+				var rendered = Mustache.render(template, view);
+				$('#welcome').html(rendered);
+			})
+		});
+	</script>
+</head>
+<body>
+	<p id="welcome"></p>
+	<div id="template" style="display : none"></div>
+
+</body>
+</html>
