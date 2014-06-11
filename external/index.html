@@ -10,9 +10,13 @@
 				name : "Mustache"
 			};
 
-			$('#template').load('template.html', function() { debugger;
+			$('#template').load('template.html', function() { 
+				// Get the template from the external template file
+				// Attention, right now the document is the external file context, not current window
 				var template = document.getElementById('template1').innerHTML;
+				// Render the template with the view
 				var rendered = Mustache.render(template, view);
+				// Render stuff in current element
 				$('#welcome').html(rendered);
 			})
 		});
@@ -20,6 +24,7 @@
 </head>
 <body>
 	<p id="welcome"></p>
+	<!-- Make it not visible, cause during load it will show all the content of external file here -->
 	<div id="template" style="display : none"></div>
 
 </body>
